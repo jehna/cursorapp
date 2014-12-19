@@ -78,6 +78,8 @@ int currentLine = 0;
     [tapRecognizer setNumberOfTapsRequired:1];
     [tapRecognizer setDelegate:self];
     [self.view addGestureRecognizer:tapRecognizer];
+    
+    [self load];
 }
 
 - (void)initKeyboardFirstTime {
@@ -183,6 +185,40 @@ CGFloat insertScale = 1.0f;
     }
     
     return accept;
+}
+
+- (void)showHeader {
+    
+}
+
+#pragma mark - Saving & Loading
+
+- (void)save {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setObject:self.currentTexts forKey:@"currentTexts"];
+    [ud setInteger:currentLine forKey:@"currentLine"];
+    [ud setInteger:currentChar forKey:@"currentChar"];
+}
+
+- (void)load {
+    for(UIView *view in self.textViews) {
+        [view removeFromSuperview];
+    }
+    self.textViews = [NSMutableArray array];
+    
+    currentChar = 0;
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    self.currentTexts = [(NSArray *)[ud objectForKey:@"currentTexts"] mutableCopy];
+    for(int i = 0; i < self.currentTexts.count; i++) {
+        [self.currentTexts setObject:[(NSString *)[self.currentTexts objectAtIndex:i] mutableCopy] atIndexedSubscript:i];
+        [self.textViews insertObject:[[UIImageView alloc] init] atIndex:i];
+        currentLine = i;
+        [self.canvasView addSubview:self.textView];
+        [self redrawText];
+    }
+    currentLine = [ud integerForKey:@"currentLine"];
+    currentChar = [ud integerForKey:@"currentChar"];
+    [self redrawText];
 }
 
 #pragma mark - UIKeyInput
