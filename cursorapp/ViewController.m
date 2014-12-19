@@ -12,6 +12,7 @@
 @property (nonatomic) NSMutableArray *currentTexts;
 @property (nonatomic) NSMutableArray *textViews;
 @property (nonatomic) UIView *cursorView;
+@property (nonatomic) UIView *canvasView;
 @end
 
 @implementation ViewController
@@ -33,21 +34,24 @@ int currentLine = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.canvasView = [[UIView alloc] initWithFrame:[self.view frame]];
+    [self.view addSubview:self.canvasView];
+    
     self.currentTexts = [NSMutableArray arrayWithObject:[NSMutableString string]];
     
-    CGRect cursorSize = CGRectMake(self.view.frame.size.width/2-cursorWidth/2,
-                                   self.view.frame.size.height/2-cursorHeight/2,
+    CGRect cursorSize = CGRectMake(self.canvasView.frame.size.width/2-cursorWidth/2,
+                                   self.canvasView.frame.size.height/2-cursorHeight/2,
                                    cursorWidth,
                                    cursorHeight);
     self.cursorView = [[UIView alloc] initWithFrame:cursorSize];
     [self.cursorView setBackgroundColor:[UIColor grayColor]];
     
-    [self.view addSubview:self.cursorView];
+    [self.canvasView addSubview:self.cursorView];
     //[self blinkCursor];
     
     self.textViews = [NSMutableArray arrayWithObject:[[UIImageView alloc] init]];
 //    [self.textView setBackgroundColor:[UIColor redColor]];
-    [self.view addSubview:self.textView];
+    [self.canvasView addSubview:self.textView];
     
     [self becomeFirstResponder];
     
@@ -99,8 +103,8 @@ int currentLine = 0;
                              orientation:UIImageOrientationUp];
     
     float posX = cursorWidth*2*currentChar;
-    CGRect textPos = CGRectMake(self.view.frame.size.width/2-12.5-posX/2,
-                                self.view.frame.size.height/2-20,
+    CGRect textPos = CGRectMake(self.canvasView.frame.size.width/2-12.5-posX/2,
+                                self.canvasView.frame.size.height/2-20,
                                 size.width/2,
                                 size.height/2);
     
@@ -147,7 +151,7 @@ int currentLine = 0;
         currentChar = 0;
         [self.currentTexts insertObject:[NSMutableString string] atIndex:currentLine];
         [self.textViews insertObject:[[UIImageView alloc] init] atIndex:currentLine];
-        [self.view addSubview:self.textView];
+        [self.canvasView addSubview:self.textView];
         
         if(hoppingText) [self.currentText insertString:hoppingText atIndex:0];
     } else {
