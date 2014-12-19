@@ -220,8 +220,8 @@ CGFloat insertScale = 1.0f;
         [self.canvasView addSubview:self.textView];
         [self redrawText];
     }
-    currentLine = [ud integerForKey:@"currentLine"];
-    currentChar = [ud integerForKey:@"currentChar"];
+    currentLine = (int)[ud integerForKey:@"currentLine"];
+    currentChar = (int)[ud integerForKey:@"currentChar"];
     [self redrawText];
 }
 
@@ -260,7 +260,7 @@ CGFloat insertScale = 1.0f;
         [self.textView removeFromSuperview];
         [self.textViews removeObjectAtIndex:currentLine];
         currentLine--;
-        currentChar = [self.currentText length];
+        currentChar = (int)[self.currentText length];
         [self.currentText insertString:remainingText atIndex:currentChar];
     } else {
         NSRange lastChar = NSMakeRange(currentChar-1, 1);
@@ -318,7 +318,7 @@ int firstLine;
         firstLine = currentLine;
     }
     
-    int maxLines = [[self.currentTexts objectAtIndex:self.currentTexts.count-1] isEqualToString:@""] ? self.currentTexts.count - 1 : self.currentTexts.count;
+    int maxLines = (int)([[self.currentTexts objectAtIndex:self.currentTexts.count-1] isEqualToString:@""] ? self.currentTexts.count - 1 : self.currentTexts.count);
     
     currentLine = firstLine - (int)roundf(translatedPoint.y/cursorHeight);
     currentLine = (int)MIN(maxLines,MAX(0,currentLine));
