@@ -13,3 +13,7 @@
 
 @end
 
+enum AppMode {
+    AppMode_Insert,
+    AppMode_Edit
+};

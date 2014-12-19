@@ -13,12 +13,14 @@
 @property (nonatomic) NSMutableArray *textViews;
 @property (nonatomic) UIView *cursorView;
 @property (nonatomic) UIView *canvasView;
+@property (nonatomic) enum AppMode currentAppMode;
+@property (nonatomic) BOOL _canBacomeFirstResponder;
 @end
 
 @implementation ViewController
 
-CGFloat minScale = 0.1;
-CGFloat maxScale = 1.5;
+CGFloat minScale = 0.40;
+CGFloat maxScale = 1.1;
 
 CGFloat lastScale = 1.0;
 CGFloat lastRotation;
@@ -53,7 +55,8 @@ int currentLine = 0;
 //    [self.textView setBackgroundColor:[UIColor redColor]];
     [self.canvasView addSubview:self.textView];
     
-    [self becomeFirstResponder];
+    [self performSelector:@selector(initKeyboardFirstTime) withObject:self afterDelay:0.0f];
+    //[self becomeFirstResponder];
     
     
     // Touch handlers
@@ -75,6 +78,11 @@ int currentLine = 0;
     [tapRecognizer setNumberOfTapsRequired:1];
     [tapRecognizer setDelegate:self];
     [self.view addGestureRecognizer:tapRecognizer];
+}
+
+- (void)initKeyboardFirstTime {
+    self._canBacomeFirstResponder = YES;
+    [self becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -103,8 +111,8 @@ int currentLine = 0;
                              orientation:UIImageOrientationUp];
     
     float posX = cursorWidth*2*currentChar;
-    CGRect textPos = CGRectMake(self.canvasView.frame.size.width/2-12.5-posX/2,
-                                self.canvasView.frame.size.height/2-20,
+    CGRect textPos = CGRectMake(self.view.frame.size.width/2-12.5-posX/2,
+                                self.view.frame.size.height/2-20,
                                 size.width/2,
                                 size.height/2);
     
@@ -131,8 +139,50 @@ int currentLine = 0;
 
 #pragma mark - UIResponder
 
--(BOOL)canBecomeFirstResponder {
-    return YES;
+- (BOOL)canBecomeFirstResponder {
+    return self._canBacomeFirstResponder;
+}
+
+CGFloat editScale = 0.5f;
+CGFloat insertScale = 1.0f;
+
+- (BOOL)becomeFirstResponder {
+    BOOL accept = [super becomeFirstResponder];
+    
+    if(accept) {
+        self.currentAppMode = AppMode_Insert;
+        [UIView animateWithDuration:0.3 animations:^{
+            CGPoint newCenter = [self.canvasView center];
+            newCenter.y = self.view.frame.size.height/2-216/2;
+            [self.canvasView setCenter:newCenter];
+            
+            CGFloat scale = insertScale / [[self.canvasView.layer valueForKeyPath:@"transform.scale.x"] floatValue];
+            CATransform3D transform = [self.canvasView.layer transform];
+            CATransform3D newTransform = CATransform3DScale(transform, scale, scale, 1);
+            [self.canvasView.layer setTransform:newTransform];
+        }];
+    }
+    return accept;
+}
+
+- (BOOL)resignFirstResponder {
+    BOOL accept = [super resignFirstResponder];
+    
+    if(accept) {
+        self.currentAppMode = AppMode_Edit;
+        [UIView animateWithDuration:0.3 animations:^{
+            CGPoint newCenter = [self.canvasView center];
+            newCenter.y = self.view.frame.size.height/2;
+            [self.canvasView setCenter:newCenter];
+            
+            CGFloat scale = editScale / [[self.canvasView.layer valueForKeyPath:@"transform.scale.x"] floatValue];
+            CATransform3D transform = [self.canvasView.layer transform];
+            CATransform3D newTransform = CATransform3DScale(transform, scale, scale, 1);
+            [self.canvasView.layer setTransform:newTransform];
+        }];
+    }
+    
+    return accept;
 }
 
 #pragma mark - UIKeyInput
@@ -187,7 +237,6 @@ int currentLine = 0;
 
 #pragma mark - UIGestureRecognizerDelegate
 -(void)scale:(UIPinchGestureRecognizer *)sender {
-    return;
     //[self.view bringSubviewToFront:[(UIPinchGestureRecognizer*)sender view]];
     
     if([sender state] == UIGestureRecognizerStateEnded) {
@@ -195,17 +244,16 @@ int currentLine = 0;
         return;
     }
     
-    CGFloat currentScale = [[self.textView.layer valueForKeyPath:@"transform.scale"] floatValue];
+    CGFloat currentScale = [[self.canvasView.layer valueForKeyPath:@"transform.scale.x"] floatValue];
     CGFloat scale = 1.0 - (lastScale - [sender scale]);
     
     scale = MIN(scale, maxScale / currentScale);
     scale = MAX(scale, minScale / currentScale);
     
-    CGAffineTransform currentTransform = self.textView.transform;
+    CGAffineTransform currentTransform = self.canvasView.transform;
     CGAffineTransform newTransform = CGAffineTransformScale(currentTransform, scale, scale);
     
-    [self.textView setTransform:newTransform];
-    [self.cursorView setTransform:newTransform];
+    [self.canvasView setTransform:newTransform];
     
     lastScale = [sender scale];
 }
@@ -283,9 +331,16 @@ int firstLine;
     }*/
 }
 
--(void)tapped:(id)sender {
-    NSLog(@"See a tap gesture");
-    [[[(UITapGestureRecognizer*)sender view] layer] removeAllAnimations];
+-(void)tapped:(UITapGestureRecognizer *)sender {
+    switch (self.currentAppMode) {
+        case AppMode_Edit:
+            [self becomeFirstResponder];
+            break;
+        case AppMode_Insert:
+            [self resignFirstResponder];
+            break;
+    }
+    //[[[(UITapGestureRecognizer*)sender view] layer] removeAllAnimations];
 }
 
 @end
