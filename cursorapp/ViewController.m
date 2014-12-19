@@ -9,8 +9,8 @@
 #import "ViewController.h"
 
 @interface ViewController () <UIKeyInput, UIGestureRecognizerDelegate>
-@property (nonatomic) NSMutableString *currentText;
-@property (nonatomic) UIImageView *textView;
+@property (nonatomic) NSMutableArray *currentTexts;
+@property (nonatomic) NSMutableArray *textViews;
 @property (nonatomic) UIView *cursorView;
 @end
 
@@ -28,11 +28,12 @@ CGFloat firstY = 0;
 int cursorWidth = 24;
 int cursorHeight = 40;
 int currentChar = 0;
+int currentLine = 0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.currentText = [NSMutableString string];
+    self.currentTexts = [NSMutableArray arrayWithObject:[NSMutableString string]];
     
     CGRect cursorSize = CGRectMake(self.view.frame.size.width/2-cursorWidth/2,
                                    self.view.frame.size.height/2-cursorHeight/2,
@@ -44,7 +45,7 @@ int currentChar = 0;
     [self.view addSubview:self.cursorView];
     //[self blinkCursor];
     
-    self.textView = [[UIImageView alloc] init];
+    self.textViews = [NSMutableArray arrayWithObject:[[UIImageView alloc] init]];
 //    [self.textView setBackgroundColor:[UIColor redColor]];
     [self.view addSubview:self.textView];
     
@@ -98,13 +99,30 @@ int currentChar = 0;
                              orientation:UIImageOrientationUp];
     
     float posX = cursorWidth*2*currentChar;
-    
     CGRect textPos = CGRectMake(self.view.frame.size.width/2-12.5-posX/2,
                                 self.view.frame.size.height/2-20,
                                 size.width/2,
                                 size.height/2);
+    
     [self.textView setImage:newImage];
     [self.textView setFrame:textPos];
+    
+    int i = 0;
+    for(UIImageView *line in self.textViews) {
+        CGRect lineFrame = [line frame];
+        lineFrame.origin.y = textPos.origin.y + (i-currentLine)*cursorHeight;
+        lineFrame.origin.x = textPos.origin.x;
+        [line setFrame:lineFrame];
+        i++;
+    }
+}
+
+- (NSMutableString *)currentText {
+    return [self.currentTexts objectAtIndex:currentLine];
+}
+
+- (UIImageView *)textView {
+    return [self.textViews objectAtIndex:currentLine];
 }
 
 #pragma mark - UIResponder
@@ -116,17 +134,45 @@ int currentChar = 0;
 #pragma mark - UIKeyInput
 
 - (void)insertText:(NSString *)text {
-    [self.currentText insertString:text atIndex:currentChar];
-    currentChar++;
+    if([text isEqualToString:@"\n"]) {
+        NSString *hoppingText;
+        if(currentChar != self.currentText.length) {
+            NSRange restOfTheLine = NSMakeRange(currentChar, self.currentText.length-currentChar);
+            hoppingText = [self.currentText substringWithRange:restOfTheLine];
+            [self.currentText deleteCharactersInRange:restOfTheLine];
+            [self redrawText];
+        }
+        
+        currentLine++;
+        currentChar = 0;
+        [self.currentTexts insertObject:[NSMutableString string] atIndex:currentLine];
+        [self.textViews insertObject:[[UIImageView alloc] init] atIndex:currentLine];
+        [self.view addSubview:self.textView];
+        
+        if(hoppingText) [self.currentText insertString:hoppingText atIndex:0];
+    } else {
+        [self.currentText insertString:text atIndex:currentChar];
+        currentChar++;
+    }
     NSLog(@"%@", self.currentText);
     [self redrawText];
 }
 
 - (void)deleteBackward {
-    if(currentChar < 1) return;
-    NSRange lastChar = NSMakeRange(currentChar-1, 1);
-    [self.currentText deleteCharactersInRange:lastChar];
-    currentChar--;
+    if(currentChar == 0) {
+        if(currentLine == 0) return;
+        NSString *remainingText = self.currentText;
+        [self.currentTexts removeObjectAtIndex:currentLine];
+        [self.textView removeFromSuperview];
+        [self.textViews removeObjectAtIndex:currentLine];
+        currentLine--;
+        currentChar = [self.currentText length];
+        [self.currentText insertString:remainingText atIndex:currentChar];
+    } else {
+        NSRange lastChar = NSMakeRange(currentChar-1, 1);
+        [self.currentText deleteCharactersInRange:lastChar];
+        currentChar--;
+    }
     NSLog(@"%@", self.currentText);
     [self redrawText];
 }
