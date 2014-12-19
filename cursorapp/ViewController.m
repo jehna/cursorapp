@@ -19,7 +19,7 @@
 
 @implementation ViewController
 
-CGFloat minScale = 0.40;
+CGFloat minScale = 0.20;
 CGFloat maxScale = 1.1;
 
 CGFloat lastScale = 1.0;
@@ -145,7 +145,6 @@ int currentLine = 0;
     return self._canBacomeFirstResponder;
 }
 
-CGFloat editScale = 0.5f;
 CGFloat insertScale = 1.0f;
 
 - (BOOL)becomeFirstResponder {
@@ -177,6 +176,11 @@ CGFloat insertScale = 1.0f;
             newCenter.y = self.view.frame.size.height/2;
             [self.canvasView setCenter:newCenter];
             
+            int maxChars = 0;
+            for(NSString *line in self.currentTexts) {
+                maxChars = (int)MAX(maxChars, line.length);
+            }
+            CGFloat editScale = MAX(minScale, MIN(maxScale, 320.0 / ((maxChars+2) * cursorWidth)));
             CGFloat scale = editScale / [[self.canvasView.layer valueForKeyPath:@"transform.scale.x"] floatValue];
             CATransform3D transform = [self.canvasView.layer transform];
             CATransform3D newTransform = CATransform3DScale(transform, scale, scale, 1);
@@ -314,10 +318,19 @@ int firstLine;
         firstLine = currentLine;
     }
     
+    int maxLines = [[self.currentTexts objectAtIndex:self.currentTexts.count-1] isEqualToString:@""] ? self.currentTexts.count - 1 : self.currentTexts.count;
+    
     currentLine = firstLine - (int)roundf(translatedPoint.y/cursorHeight);
-    currentLine = (int)MIN(self.textViews.count-1,MAX(0,currentLine));
+    currentLine = (int)MIN(maxLines,MAX(0,currentLine));
     currentChar = firstChar - (int)roundf(translatedPoint.x/cursorWidth);
     currentChar = (int)MIN(self.currentText.length,MAX(0,currentChar));
+    
+    if(maxLines == self.currentTexts.count) {
+        [self.currentTexts insertObject:[NSMutableString string] atIndex:maxLines];
+        [self.textViews insertObject:[[UIImageView alloc] init] atIndex:maxLines];
+        [self.canvasView addSubview:[self.textViews objectAtIndex:maxLines]];
+    }
+    
     [self redrawText];
     /*
     CGFloat x = roundf((firstX+translatedPoint.x)/cursorWidth)*cursorWidth+padX;
