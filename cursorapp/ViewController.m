@@ -154,7 +154,7 @@ int currentLine = 0;
         [self.currentText insertString:text atIndex:currentChar];
         currentChar++;
     }
-    NSLog(@"%@", self.currentText);
+    //NSLog(@"%@", self.currentText);
     [self redrawText];
 }
 
@@ -173,7 +173,7 @@ int currentLine = 0;
         [self.currentText deleteCharactersInRange:lastChar];
         currentChar--;
     }
-    NSLog(@"%@", self.currentText);
+    //NSLog(@"%@", self.currentText);
     [self redrawText];
 }
 
@@ -209,6 +209,7 @@ int currentLine = 0;
 CGFloat padX;
 CGFloat padY;
 int firstChar;
+int firstLine;
 -(void)move:(UIPanGestureRecognizer *)sender {
 
     //[[[sender view] layer] removeAllAnimations];
@@ -222,9 +223,12 @@ int firstChar;
         padX = fmodf(firstX, cursorWidth);
         padY = fmodf(firstY, cursorHeight);
         firstChar = currentChar;
+        firstLine = currentLine;
     }
     
-    currentChar = firstChar - (int)roundf((translatedPoint.x)/cursorWidth);
+    currentLine = firstLine - (int)roundf(translatedPoint.y/cursorHeight);
+    currentLine = (int)MIN(self.textViews.count-1,MAX(0,currentLine));
+    currentChar = firstChar - (int)roundf(translatedPoint.x/cursorWidth);
     currentChar = (int)MIN(self.currentText.length,MAX(0,currentChar));
     [self redrawText];
     /*
