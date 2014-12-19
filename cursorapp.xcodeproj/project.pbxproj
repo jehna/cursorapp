@@ -350,6 +350,7 @@
 				INFOPLIST_FILE = cursorapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -360,6 +361,7 @@
 				INFOPLIST_FILE = cursorapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -416,6 +418,7 @@
 				39BB3F801A421903001E6108 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39BB3F811A421903001E6108 /* Build configuration list for PBXNativeTarget "cursorappTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +427,7 @@
 				39BB3F831A421903001E6108 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
