@@ -99,8 +99,8 @@ int currentLine = 0;
 
 #pragma mark - Text rendering
 - (void)redrawText {
-    UIFont *font = [UIFont fontWithName:@"Courier" size:cursorHeight*2];
-    CGSize size = CGSizeMake(cursorWidth*2*self.currentText.length+0.1, cursorHeight*2);
+    UIFont *font = [UIFont fontWithName:@"Droid Sans Mono" size:cursorHeight*2];
+    CGSize size = CGSizeMake(cursorWidth*2*self.currentText.length+0.1, cursorHeight*2+30);
     UIGraphicsBeginImageContext(size);
     //[self.textRenderImage drawInRect:CGRectMake(0,0,size.width,size.height)];
     CGRect rect = CGRectMake(0, 0, size.width, size.height);
@@ -114,7 +114,7 @@ int currentLine = 0;
     
     float posX = cursorWidth*2*currentChar;
     CGRect textPos = CGRectMake(self.view.frame.size.width/2-12.5-posX/2,
-                                self.view.frame.size.height/2-20,
+                                self.view.frame.size.height/2-32,
                                 size.width/2,
                                 size.height/2);
     

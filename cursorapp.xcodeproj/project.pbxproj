@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39B9962A1A44DD79009A12D2 /* DroidSansMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39B996281A44DD79009A12D2 /* DroidSansMono.ttf */; };
 		39BB3F611A421903001E6108 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BB3F601A421903001E6108 /* main.m */; };
 		39BB3F641A421903001E6108 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BB3F631A421903001E6108 /* AppDelegate.m */; };
 		39BB3F671A421903001E6108 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BB3F661A421903001E6108 /* ViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		39B996281A44DD79009A12D2 /* DroidSansMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DroidSansMono.ttf; sourceTree = "<group>"; };
+		39B996291A44DD79009A12D2 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		39BB3F5B1A421903001E6108 /* cursorapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cursorapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39BB3F5F1A421903001E6108 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39BB3F601A421903001E6108 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -61,6 +64,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39B996251A44DD6A009A12D2 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				39B996261A44DD70009A12D2 /* Fonts */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		39B996261A44DD70009A12D2 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				39B996271A44DD79009A12D2 /* Droid_Sans_Mono */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		39B996271A44DD79009A12D2 /* Droid_Sans_Mono */ = {
+			isa = PBXGroup;
+			children = (
+				39B996281A44DD79009A12D2 /* DroidSansMono.ttf */,
+				39B996291A44DD79009A12D2 /* LICENSE.txt */,
+			);
+			path = Droid_Sans_Mono;
+			sourceTree = "<group>";
+		};
 		39BB3F521A421903001E6108 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +111,7 @@
 		39BB3F5D1A421903001E6108 /* cursorapp */ = {
 			isa = PBXGroup;
 			children = (
+				39B996251A44DD6A009A12D2 /* Assets */,
 				39BB3F621A421903001E6108 /* AppDelegate.h */,
 				39BB3F631A421903001E6108 /* AppDelegate.m */,
 				39BB3F651A421903001E6108 /* ViewController.h */,
@@ -202,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39BB3F6A1A421903001E6108 /* Main.storyboard in Resources */,
+				39B9962A1A44DD79009A12D2 /* DroidSansMono.ttf in Resources */,
 				39BB3F6F1A421903001E6108 /* LaunchScreen.xib in Resources */,
 				39BB3F6C1A421903001E6108 /* Images.xcassets in Resources */,
 			);
