@@ -11,6 +11,7 @@
 		39B996351A48606B009A12D2 /* icon-v1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39B9962F1A48606B009A12D2 /* icon-v1@2x.png */; };
 		39B996371A48606B009A12D2 /* icon-v1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39B996311A48606B009A12D2 /* icon-v1@3x.png */; };
 		39B9963C1A486A42009A12D2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39B9963B1A486A42009A12D2 /* Images.xcassets */; };
+		39B996401A486DFC009A12D2 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B9963F1A486DFC009A12D2 /* UIColor+HexString.m */; };
 		39BB3F611A421903001E6108 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BB3F601A421903001E6108 /* main.m */; };
 		39BB3F641A421903001E6108 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BB3F631A421903001E6108 /* AppDelegate.m */; };
 		39BB3F671A421903001E6108 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BB3F661A421903001E6108 /* ViewController.m */; };
@@ -34,6 +35,8 @@
 		39B9962F1A48606B009A12D2 /* icon-v1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-v1@2x.png"; sourceTree = "<group>"; };
 		39B996311A48606B009A12D2 /* icon-v1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-v1@3x.png"; sourceTree = "<group>"; };
 		39B9963B1A486A42009A12D2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		39B9963E1A486DFC009A12D2 /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
+		39B9963F1A486DFC009A12D2 /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
 		39BB3F5B1A421903001E6108 /* cursorapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cursorapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39BB3F5F1A421903001E6108 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39BB3F601A421903001E6108 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -77,6 +80,15 @@
 			path = "visuals/icon-v1";
 			sourceTree = "<group>";
 		};
+		39B9963D1A486DDC009A12D2 /* Native class extensions */ = {
+			isa = PBXGroup;
+			children = (
+				39B9963E1A486DFC009A12D2 /* UIColor+HexString.h */,
+				39B9963F1A486DFC009A12D2 /* UIColor+HexString.m */,
+			);
+			name = "Native class extensions";
+			sourceTree = "<group>";
+		};
 		39BB3F521A421903001E6108 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +111,7 @@
 		39BB3F5D1A421903001E6108 /* cursorapp */ = {
 			isa = PBXGroup;
 			children = (
+				39B9963D1A486DDC009A12D2 /* Native class extensions */,
 				39BB3F621A421903001E6108 /* AppDelegate.h */,
 				39BB3F631A421903001E6108 /* AppDelegate.m */,
 				39BB3F651A421903001E6108 /* ViewController.h */,
@@ -242,6 +255,7 @@
 			files = (
 				39BB3F671A421903001E6108 /* ViewController.m in Sources */,
 				39BB3F641A421903001E6108 /* AppDelegate.m in Sources */,
+				39B996401A486DFC009A12D2 /* UIColor+HexString.m in Sources */,
 				39BB3F611A421903001E6108 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
