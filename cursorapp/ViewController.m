@@ -29,7 +29,7 @@ CGFloat lastRotation;
 CGFloat firstX = 0;
 CGFloat firstY = 0;
 
-int cursorWidth = 24;
+CGFloat cursorWidth = 24.1;
 int cursorHeight = 40;
 int currentChar = 0;
 int currentLine = 0;
@@ -117,8 +117,8 @@ CGFloat cursorBlinkIntervalIn = 0.38;
 
 #pragma mark - Text rendering
 - (void)redrawText {
-    UIFont *font = [UIFont fontWithName:@"Courier" size:cursorHeight*2];
-    CGSize size = CGSizeMake(cursorWidth*2*self.currentText.length+0.1, cursorHeight*2);
+    UIFont *font = [UIFont fontWithName:@"Input" size:cursorHeight*2];
+    CGSize size = CGSizeMake(cursorWidth*2*self.currentText.length+0.1, cursorHeight*2+10);
     UIGraphicsBeginImageContext(size);
     //[self.textRenderImage drawInRect:CGRectMake(0,0,size.width,size.height)];
     CGRect rect = CGRectMake(0, 0, size.width, size.height);
@@ -131,8 +131,8 @@ CGFloat cursorBlinkIntervalIn = 0.38;
                              orientation:UIImageOrientationUp];
     
     float posX = cursorWidth*2*currentChar;
-    CGRect textPos = CGRectMake(self.view.frame.size.width/2-12.5-posX/2,
-                                self.view.frame.size.height/2-20,
+    CGRect textPos = CGRectMake(self.view.frame.size.width/2-11-posX/2,
+                                self.view.frame.size.height/2-25,
                                 size.width/2,
                                 size.height/2);
     
