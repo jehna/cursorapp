@@ -24,6 +24,7 @@ Here are things to does:
 - Jump word
 - Visual mode
 - Save + Load files
+- Copy + Paste
 
 ### Features
 
