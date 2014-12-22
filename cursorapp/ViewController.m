@@ -212,6 +212,7 @@ CGFloat insertScale = 1.0f;
     
     currentChar = 0;
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    if([ud objectForKey:@"currentTexts"] == nil) return;
     self.currentTexts = [(NSArray *)[ud objectForKey:@"currentTexts"] mutableCopy];
     for(int i = 0; i < self.currentTexts.count; i++) {
         [self.currentTexts setObject:[(NSString *)[self.currentTexts objectAtIndex:i] mutableCopy] atIndexedSubscript:i];
