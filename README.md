@@ -1,4 +1,6 @@
-Cursor App ![appicon](http://i.imgur.com/jP6RPGk.png)
+![appicon](http://i.imgur.com/jP6RPGk.png)
+
+Cursor App
 ----------
 > The most innovative thing there is!
 
