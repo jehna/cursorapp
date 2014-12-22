@@ -15,9 +15,31 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="icon-v1.svg">
+   sodipodi:docname="icon-v1.svg"
+   inkscape:export-filename="/Users/jesseluoto/Omat/cursorapp/visuals/icon-v1/icon-v1@2x.png"
+   inkscape:export-xdpi="142.10001"
+   inkscape:export-ydpi="142.10001">
   <defs
      id="defs4">
+    <linearGradient
+       id="linearGradient3840">
+      <stop
+         style="stop-color:#2fa990;stop-opacity:1"
+         offset="0"
+         id="stop3842" />
+      <stop
+         id="stop3850"
+         offset="0.27687025"
+         style="stop-color:#2fa890;stop-opacity:1" />
+      <stop
+         id="stop3848"
+         offset="0.82417321"
+         style="stop-color:#ffffff;stop-opacity:0;" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.39495799;"
+         offset="1"
+         id="stop3844" />
+    </linearGradient>
     <linearGradient
        id="linearGradient3773">
       <stop
@@ -38,7 +60,17 @@
        x2="40.139584"
        y2="976.73401"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,0.99983138,0,0.1646355)" />
+       gradientTransform="matrix(1.0000101,0,0,0.99679981,-3.8301358e-4,3.3678044)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3840"
+       id="linearGradient3846"
+       x1="37.123108"
+       y1="1048.39"
+       x2="38.876892"
+       y2="977.42682"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0000101,0,0,0.99696792,-3.8301358e-4,3.2036681)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -66,6 +98,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -76,24 +109,25 @@
     <rect
        style="fill:#30ab92;fill-opacity:1;stroke:none"
        id="rect2985"
-       width="76"
-       height="75.987183"
-       x="0"
-       y="976.36218"
-       ry="10.998145" />
-    <path
-       style="fill:#000000;fill-opacity:0.34782613;stroke:none"
-       d="m 0,1037.1148 0,4.2493 c 0,6.0929 4.906,10.9981 11,10.9981 l 54,0 c 6.094,0 11,-4.9052 11,-10.9981 l 0,-4.2493 c 0,6.0929 -4.906,10.9981 -11,10.9981 l -54,0 c -6.094,0 -11,-4.9052 -11,-10.9981 z"
-       id="rect3000"
-       inkscape:connector-curvature="0" />
+       width="76.000763"
+       height="75.756783"
+       x="-0.0003830136"
+       y="976.60541"
+       ry="14.954518"
+       inkscape:export-filename="/Users/jesseluoto/Omat/cursorapp/visuals/icon-v1/text3795.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <rect
-       ry="10.998145"
-       y="976.36218"
-       x="0"
-       height="75.987183"
-       width="76"
+       ry="14.954518"
+       y="976.60541"
+       x="-0.0003830136"
+       height="75.756783"
+       width="76.000763"
        id="rect3771"
-       style="fill:url(#linearGradient3779);fill-opacity:1;stroke:none" />
+       style="fill:url(#linearGradient3779);fill-opacity:1;stroke:none"
+       inkscape:export-filename="/Users/jesseluoto/Omat/cursorapp/visuals/icon-v1/text3795.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Courier New;-inkscape-font-specification:Courier New"
@@ -114,28 +148,46 @@
     <text
        sodipodi:linespacing="125%"
        id="text3791"
-       y="1033.0992"
-       x="15.722399"
-       style="font-size:70.19542694px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:0.38695655;stroke:none;font-family:Sans"
+       y="1034.7458"
+       x="15.698241"
+       style="font-size:70.08927917px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:0.29130435;stroke:none;font-family:Sans"
        xml:space="preserve"
-       transform="scale(1.0000843,0.9999157)"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:0.38695655;font-family:Courier New;-inkscape-font-specification:Courier New Bold"
-         y="1033.0992"
-         x="15.722399"
+       transform="scale(1.001609,0.9983936)"
+       inkscape:export-filename="/Users/jesseluoto/Omat/cursorapp/visuals/icon-v1/text3795.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:0.29130435;font-family:Courier New;-inkscape-font-specification:Courier New Bold"
+         y="1034.7458"
+         x="15.698241"
          id="tspan3793"
          sodipodi:role="line">C</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:70.19542694px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"
-       x="15.722399"
-       y="1034.8466"
+       style="font-size:70.08927917px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"
+       x="15.698241"
+       y="1036.4905"
        id="text3795"
        sodipodi:linespacing="125%"
-       transform="scale(1.0000843,0.9999157)"><tspan
+       transform="scale(1.001609,0.9983936)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
          id="tspan3797"
-         x="15.722399"
-         y="1034.8466"
+         x="15.698241"
+         y="1036.4905"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#ffffff;font-family:Courier New;-inkscape-font-specification:Courier New Bold">C</tspan></text>
+    <path
+       style="fill:#000000;fill-opacity:0.26521738;stroke:none"
+       d="m -3.8301358e-4,1034.162 0,3.2402 c 0,8.2847 6.69006741358,14.9544 15.00015101358,14.9544 l 46.000463,0 c 8.310084,0 15.000151,-6.6697 15.000151,-14.9544 l 0,-3.2402 c 0,8.2847 -6.690067,14.9546 -15.000151,14.9546 l -46.000463,0 c -8.3100836,0 -15.00015101358,-6.6699 -15.00015101358,-14.9546 z"
+       id="rect3833"
+       inkscape:connector-curvature="0" />
+    <rect
+       style="fill:none;stroke:url(#linearGradient3846);stroke-width:0.50246382;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3838"
+       width="75.497528"
+       x="0.25123191"
+       y="976.61383"
+       ry="14.855499"
+       height="72.098686" />
   </g>
 </svg>
