@@ -33,6 +33,9 @@ int cursorHeight = 40;
 int currentChar = 0;
 int currentLine = 0;
 
+CGFloat cursorBlinkIntervalOut = 0.65;
+CGFloat cursorBlinkIntervalIn = 0.38;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -84,7 +87,7 @@ int currentLine = 0;
 - (void)initKeyboardFirstTime {
     self._canBacomeFirstResponder = YES;
     [self becomeFirstResponder];
-    [self performSelector:@selector(blinkCursor) withObject:self afterDelay:1.0];
+    [self resetBlink];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,9 +95,23 @@ int currentLine = 0;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)resetBlink {
+    [self.cursorView.layer removeAllAnimations];
+    [self.cursorView setHidden:NO];
+    [self.cursorView setAlpha:1.0];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(blinkCursor) object:nil];
+    [self performSelector:@selector(blinkCursor) withObject:nil afterDelay:cursorBlinkIntervalOut];
+}
+
 - (void)blinkCursor {
-    [self.cursorView setHidden:!self.cursorView.hidden];
-    [self performSelector:@selector(blinkCursor) withObject:self afterDelay:1.0];
+    CGFloat toAlpha = self.cursorView.alpha == 0 ? 1 : 0;
+    CGFloat interval = self.cursorView.alpha == 0 ? cursorBlinkIntervalOut : cursorBlinkIntervalIn;
+    [UIView animateWithDuration:0.1 animations:^{
+        [self.cursorView setAlpha:toAlpha];
+    } completion:^(BOOL finished) {
+        if(finished) [self performSelector:@selector(blinkCursor) withObject:nil afterDelay:interval];
+    }];
+    
 }
 
 #pragma mark - Text rendering
@@ -129,6 +146,8 @@ int currentLine = 0;
         [line setFrame:lineFrame];
         i++;
     }
+    
+    [self resetBlink];
 }
 
 - (NSMutableString *)currentText {
