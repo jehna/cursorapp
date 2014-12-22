@@ -12,7 +12,7 @@
             <subviews>
                 <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gTv-Np-jBv">
                     <rect key="frame" x="148" y="264" width="24" height="40"/>
-                    <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.18823529411764706" green="0.6705882352941176" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
