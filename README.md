@@ -1,4 +1,4 @@
-![appicon](http://i.imgur.com/jP6RPGk.png)
+<img src="http://i.imgur.com/jP6RPGk.png" alt="icon" style="float: right;" />
 
 Cursor App
 ----------
