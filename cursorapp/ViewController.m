@@ -49,7 +49,7 @@ int currentLine = 0;
     [self.cursorView setBackgroundColor:[UIColor grayColor]];
     
     [self.canvasView addSubview:self.cursorView];
-    //[self blinkCursor];
+    [self blinkCursor];
     
     self.textViews = [NSMutableArray arrayWithObject:[[UIImageView alloc] init]];
 //    [self.textView setBackgroundColor:[UIColor redColor]];
