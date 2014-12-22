@@ -40,7 +40,6 @@
 		39BB3F741A421903001E6108 /* cursorappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cursorappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39BB3F791A421903001E6108 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39BB3F7A1A421903001E6108 /* cursorappTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cursorappTests.m; sourceTree = "<group>"; };
-		39BB3F841A42213B001E6108 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +63,6 @@
 		39BB3F521A421903001E6108 = {
 			isa = PBXGroup;
 			children = (
-				39BB3F841A42213B001E6108 /* UIKit.framework */,
 				39BB3F5D1A421903001E6108 /* cursorapp */,
 				39BB3F771A421903001E6108 /* cursorappTests */,
 				39BB3F5C1A421903001E6108 /* Products */,
