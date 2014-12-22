@@ -15,7 +15,6 @@ Here are things to does:
 ### Animations
 
 - Overzoom animations
-- Cursor blink animations
 
 ### Header
 
@@ -47,5 +46,4 @@ Here are things to does:
 ### Visuals
 
 - Awesome commercial font
-- Icon
 - Background image?
