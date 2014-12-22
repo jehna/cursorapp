@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Jesse Luoto. All rights reserved.
 //
 
+#import "UIColor+HexString.h"
 #import "ViewController.h"
 
 @interface ViewController () <UIKeyInput, UIGestureRecognizerDelegate>
@@ -49,7 +50,7 @@ CGFloat cursorBlinkIntervalIn = 0.38;
                                    cursorWidth,
                                    cursorHeight);
     self.cursorView = [[UIView alloc] initWithFrame:cursorSize];
-    [self.cursorView setBackgroundColor:[UIColor grayColor]];
+    [self.cursorView setBackgroundColor:[UIColor colorWithHex:0x30AB92]];
     
     [self.canvasView addSubview:self.cursorView];
     
