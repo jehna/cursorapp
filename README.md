@@ -9,7 +9,7 @@ Cursor App
 
 Everyone just loves screenshots!
 
-![screenshot1](http://i.imgur.com/HAEQ5YJ.jpg)
+![screenshot1](http://i.imgur.com/g4S4FS8.jpg)
 
 ## Todoes
 
