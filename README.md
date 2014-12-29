@@ -50,3 +50,7 @@ Here are things to does:
 
 - Awesome commercial font
 - Background image?
+
+## License
+
+Licensed under MIT license
